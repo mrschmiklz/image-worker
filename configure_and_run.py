@@ -24,19 +24,25 @@ def verify_api_key(api_key):
     response = requests.get("https://api.aipowergrid.io/api/v2/find_user", headers=headers)
 
     if response.status_code == 200:
+        user_info = response.json()
+        username = user_info.get("username", "Unknown")
+        print(f"User '{username}' found on the grid.")
         return True
     else:
-        print("Invalid API key. Please set your API key - https://api.aipowergrid.io/register")
+        print(f"Error: Response status is {response.status_code}")
+        print(response.json())
         return False
 
 # Function to safely prompt for API key
 def get_api_key():
     while True:
         api_key = input("Enter your API key: ").strip()
+        print(f"Entered API key: {api_key}")
         if verify_api_key(api_key):
             print("API key verified successfully.")
             return api_key
         else:
+            print("Invalid API key. Please set your API key - https://api.aipowergrid.io/register")
             print("Please try again.")
 
 # Prompt for the API key until a valid one is entered
