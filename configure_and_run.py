@@ -29,15 +29,21 @@ def verify_api_key(api_key):
         print("Invalid API key. Please set your API key - https://api.aipowergrid.io/register")
         return False
 
-# Prompt for API key until a valid one is entered
-while True:
-    api_key = input("Enter your API key: ")
-    if verify_api_key(api_key):
-        print("API key verified successfully.")
-        break
+# Function to safely prompt for API key
+def get_api_key():
+    while True:
+        api_key = input("Enter your API key: ").strip()
+        if verify_api_key(api_key):
+            print("API key verified successfully.")
+            return api_key
+        else:
+            print("Please try again.")
+
+# Prompt for the API key until a valid one is entered
+api_key = get_api_key()
 
 # Prompt for the worker name
-dreamer_name = input("Enter your Dreamer worker name: ")
+dreamer_name = input("Enter your Dreamer worker name: ").strip()
 
 # Update the config data with the verified API key and worker name
 config_data["api_key"] = api_key
