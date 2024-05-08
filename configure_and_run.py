@@ -15,25 +15,33 @@ shutil.copyfile(template_path, config_path)
 with open(config_path, "r") as file:
     config_data = yaml.safe_load(file)
 
-# Prompt for API key and worker name
-api_key = input("Enter your API key: ")
+# Function to verify the API key
+def verify_api_key(api_key):
+    headers = {
+        "apikey": api_key,
+        "Client-Agent": "horde-bridge:1.0"
+    }
+    response = requests.get("https://api.aipowergrid.io/api/v2/find_user", headers=headers)
+
+    if response.status_code == 200:
+        return True
+    else:
+        print("Invalid API key. Please set your API key - https://api.aipowergrid.io/register")
+        return False
+
+# Prompt for API key until a valid one is entered
+while True:
+    api_key = input("Enter your API key: ")
+    if verify_api_key(api_key):
+        print("API key verified successfully.")
+        break
+
+# Prompt for the worker name
 dreamer_name = input("Enter your Dreamer worker name: ")
 
-# Verify the API key
-headers = {
-    "apikey": api_key,
-    "Client-Agent": "horde-bridge:1.0"
-}
-
-response = requests.get("https://api.aipowergrid.io/api/", headers=headers)
-
-if response.status_code == 200:
-    print("API key verified successfully.")
-    config_data["api_key"] = api_key
-    config_data["dreamer_name"] = dreamer_name
-else:
-    print("Invalid API key. Please set your API key - https://api.aipowergrid.io/register")
-    exit(1)
+# Update the config data with the verified API key and worker name
+config_data["api_key"] = api_key
+config_data["dreamer_name"] = dreamer_name
 
 # Write the updated data back to bridgeData.yaml
 with open(config_path, "w") as file:
