@@ -18,3 +18,5 @@ StrEnum
 loguru
 
 babel
+
+PyYAML
