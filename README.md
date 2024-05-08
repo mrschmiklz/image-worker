@@ -29,8 +29,18 @@ Please note that **AMD card are not currently well supported**, but may be in th
 
 If you haven't already, go to [AIPG Grid and register an account](https://api.aipowergrid.io/register), then store your API key somewhere secure. Treat your API key like a password. You will need it later in these instructions. This will allow your worker to gather kudos for your account.
 
+**Please note:**
+
+Every instance of the worker will need a name(think of a good one)
+
 
 ### Windows
+
+#### Using one click option (experimental)
+
+1. run setup_and_run.cmd
+2. Follow prompts for setup
+
 
 #### Using git (recommended)
 
