@@ -26,11 +26,11 @@ if %errorlevel% neq 0 (
 
 :: Upgrade pip and Install PyTorch with CUDA 12.1 support
 echo [INFO] Installing PyTorch with CUDA 12.1 support
-pip install --disable-pip-version-check torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2+cu121 -f https://download.pytorch.org/whl/test/cu121
+pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2+cu121 --extra-index-url https://download.pytorch.org/whl/cu121
 
 :: Install additional Python packages
 echo [INFO] Installing other Python packages from requirements.txt
-pip install --disable-pip-version-check -r requirements.txt
+pip install -r requirements.txt
 
 :: Print completion message
 echo [INFO] Setup and package installation completed.
