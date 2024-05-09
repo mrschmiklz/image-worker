@@ -30,5 +30,16 @@ pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2+cu121
 echo [INFO] Installing other Python packages from requirements.txt
 pip install --disable-pip-version-check -r requirements.txt
 
+:: Print message about running the Python GUI script
+echo [INFO] Running configure_and_run_gui.py
+python configure_and_run_gui.py
+
+:: Check for errors
+if %errorlevel% neq 0 (
+    echo [ERROR] Error occurred while running configure_and_run_gui.py
+    echo [ERROR] Check the terminal output for details.
+    exit /b 1
+)
+
 :: Print completion message
 echo [INFO] Setup and package installation completed.
