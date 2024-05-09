@@ -33,10 +33,6 @@ pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2+cu121
 echo [INFO] Installing other Python packages from requirements.txt
 pip install -r requirements.txt
 
-:: Deactivate the virtual environment
-echo [INFO] Deactivating virtual environment
-deactivate
-
 :: Completion message
 echo [INFO] Setup and package installation completed.
 pause
