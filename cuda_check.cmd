@@ -35,4 +35,3 @@ pip install -r requirements.txt
 
 :: Completion message
 echo [INFO] Setup and package installation completed.
-pause
