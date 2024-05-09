@@ -28,5 +28,3 @@ if ((Get-Command python -ErrorAction SilentlyContinue) -eq $null) {
 } else {
     Write-Output "[INFO] Python successfully added to PATH."
 }
-
-pause
