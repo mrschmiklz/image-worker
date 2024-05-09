@@ -4,7 +4,6 @@ echo [INFO] Running CUDA Check
 call cuda_check.cmd
 if %errorlevel% neq 0 (
     echo [ERROR] CUDA Check failed. Please fix the issue before proceeding.
-    pause
     exit /b 1
 )
 
@@ -20,7 +19,6 @@ echo [INFO] Activating virtual environment
 call venv-imagegen\Scripts\activate
 if %errorlevel% neq 0 (
     echo [ERROR] Virtual environment activation failed.
-    pause
     exit /b 1
 )
 
@@ -34,5 +32,3 @@ pip install -r requirements.txt
 
 :: Print completion message
 echo [INFO] Setup and package installation completed.
-
-pause
