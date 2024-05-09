@@ -18,7 +18,7 @@ python -m pip install --upgrade pip
 
 :: Print message about installing requirements
 echo [INFO] Installing required packages from requirements.txt
-pip install -r requirements.txt
+pip install --disable-pip-version-check -r requirements.txt
 
 :: Print message about running the Python GUI script
 echo [INFO] Running configure_and_run_gui.py
