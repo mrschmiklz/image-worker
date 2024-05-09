@@ -95,7 +95,7 @@ def start_bridge():
         messagebox.showerror("Error", "Invalid API Key")
         return
     save_config()
-    subprocess.run(["horde-bridge.cmd"])
+    subprocess.Popen("start cmd /c horde-bridge.cmd", shell=True)
     root.destroy()
 
 # Setup GUI
