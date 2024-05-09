@@ -28,7 +28,7 @@ pip install torch==2.1.2+cu121 torchvision==0.16.2+cu121 torchaudio==2.1.2+cu121
 
 :: Install additional Python packages
 echo [INFO] Installing other Python packages from requirements.txt
-pip install -r requirements.txt
+pip install --disable-pip-version-check -r requirements.txt
 
 :: Print completion message
 echo [INFO] Setup and package installation completed.
